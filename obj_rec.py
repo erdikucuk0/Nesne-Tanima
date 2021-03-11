@@ -5,7 +5,6 @@ from keras.applications import imagenet_utils
 from PIL import Image
 import numpy as np
 from io import BytesIO
-import os
 import requests
 
 # load the earlier trained model
@@ -28,9 +27,9 @@ response = requests.get(ImageURL)
 image = Image.open(BytesIO(response.content))
 data = {"success": False}
 
-# reshape 224*224 
+# reshape 224*224
 prepared_image = prepare_image(image, target=(224, 224))
-preds = model.predict(prepared_image)  
+preds = model.predict(prepared_image)
 
 results = imagenet_utils.decode_predictions(preds)
 data["predictions"] = []
@@ -41,7 +40,6 @@ for (imagenetID, label, prob) in results[0]:
 
 data["success"] = True
 
-print(data)
-
-print("The classification estimate is {1} with the highest ratio of {0}. ".format(data["predictions"][0]["label"],
+# prediction result
+print("The classification estimate is {0} with the highest ratio of {1}. ".format(data["predictions"][0]["label"],
                                                                             data["predictions"][0]["probability"]))
