@@ -20,7 +20,7 @@ def prepare_image(image, target):
 
     return image
 
-# here you shuold paste a url of an image
+# here you should paste url of an image
 # i chose a glasses img, you can try with whatever you want :)
 ImageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd7SolZCs6-o2AfdJxD7q2C9vycgGZlBPTmg&usqp=CAU"
 response = requests.get(ImageURL)
